@@ -1,0 +1,20 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /sunflower
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    name: sunflower
+    url: jdbc:mysql://127.0.0.1:3306/${spring.datasource.name}?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+  jpa:
+    open-in-view: true
+    database: mysql
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect

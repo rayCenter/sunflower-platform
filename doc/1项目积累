@@ -1,0 +1,15 @@
+一、
+    1.@ModelAttribute：x-www-form-urlencoded
+    1.@RequestBody：application/json
+
+二、
+    1.项目中原生spring maven依赖需要体现在父pom.xml，并注释，起到一目了然管理；
+    2.第三方maven依赖，必须在父pom.xml中管理声明，子pom.xml直接引用（无需版本号）；
+
+三、 https://www.cnblogs.com/javastack/p/10297550.html
+
+    1.Hibernate Validator：https://docs.jboss.org/hibernate/stable/validator/reference/en-US/html_single/#preface
+    @Valid： 用在方法入参上无法单独提供嵌套验证功能。能够用在成员属性（字段）上，提示验证框架进行嵌套验证。能配合嵌套验证注解@Valid进行嵌套验证。
+
+    2.Spring Validator：https://docs.spring.io/spring/docs/5.0.5.RELEASE/spring-framework-reference/core.html#validation
+    @Validated： 用在方法入参上无法单独提供嵌套验证功能。不能用在成员属性（字段）上，也无法提示框架进行嵌套验证。能配合嵌套验证注解@Valid进行嵌套验证。

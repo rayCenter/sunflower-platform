@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: sunflower-view
+  profiles:
+    active: dev
