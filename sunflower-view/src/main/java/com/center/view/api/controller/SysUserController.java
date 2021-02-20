@@ -93,7 +93,7 @@ public class SysUserController extends AbstractController<SysUserQo, SysUserVo> 
             path = {"/login.json", "/login.do"}
     )
     public ResponseResult<String> login(final @RequestBody @Validated SysUserVo sysUserVo, final HttpServletResponse response) {
-        response.setHeader("token", JwtUtils.createJwt(JSON.toJSONString(sysUserVo)));
+        response.setHeader(ConstantEnum.Login.AUTHORIZATION.getName(), JwtUtils.createJwt(JSON.toJSONString(sysUserVo)));
         return ApiResult.succeeded(
                 ConstantEnum.Status.SUCCEEDED.getCode(),
                 "登录成功"

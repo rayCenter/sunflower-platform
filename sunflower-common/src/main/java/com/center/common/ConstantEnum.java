@@ -71,7 +71,8 @@ public interface ConstantEnum {
     enum Login implements ConstantEnum {
 
         ADMIN("admin", "管理员用户登录账号"),
-        SESSION_USER("SESSION_USER", "存取session当前用户键");
+        SESSION_USER("SESSION_USER", "存取session当前用户键"),
+        AUTHORIZATION("Authorization", "存取授权码键");
 
         private final String name;
 
