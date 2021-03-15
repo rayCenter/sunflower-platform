@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class QuickStart {
+public class QuickRunningView {
 
     public static void main(String[] args) {
-        SpringApplication.run(QuickStart.class, args);
+        SpringApplication.run(QuickRunningView.class, args);
     }
 }

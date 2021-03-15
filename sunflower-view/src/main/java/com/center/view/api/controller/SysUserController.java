@@ -15,6 +15,7 @@ import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -92,11 +93,17 @@ public class SysUserController extends AbstractController<SysUserQo, SysUserVo> 
             name = "系统登录入口",
             path = {"/login.json", "/login.do"}
     )
-    public ResponseResult<String> login(final @RequestBody @Validated SysUserVo sysUserVo, final HttpServletResponse response) {
+    public ResponseResult<String> login(final @RequestBody @Validated SysUserVo sysUserVo,
+                                        final HttpServletRequest request,
+                                        final HttpServletResponse response) {
+        String authorization = request.getHeader(ConstantEnum.Login.AUTHORIZATION.getName());
+        log.info("{}：{}", ConstantEnum.Login.AUTHORIZATION.getName(), authorization);
         response.setHeader(ConstantEnum.Login.AUTHORIZATION.getName(), JwtUtils.createJwt(JSON.toJSONString(sysUserVo)));
+        String menus = "[{\"id\":\"0\",\"name\":\"主页\",\"path\":\"/\",\"icon\":\"fa fa-fw fa-home\"},{\"id\":\"1\",\"name\":\"系统配置\",\"path\":\"/config\",\"icon\":\"fa fa-fw fa-cogs\",\"menus\":[{\"id\":\"1-0\",\"name\":\"日志管理\",\"path\":\"/config/log\",\"menus\":[{\"id\":\"1-0-0\",\"name\":\"系统日志管理\",\"path\":\"/config/log/system\"},{\"id\":\"1-0-1\",\"name\":\"业务日志管理\",\"path\":\"/config/log/business\"}]},{\"id\":\"1-1\",\"name\":\"菜单管理\",\"path\":\"/config/menu\"}]},{\"id\":\"2\",\"name\":\"一级菜单\",\"path\":\"/1\",\"icon\":\"fa fa-fw fa-tags\",\"menus\":[{\"id\":\"2-0\",\"name\":\"二级菜单\",\"path\":\"/1/1\"},{\"id\":\"2-1\",\"name\":\"二级菜单\",\"path\":\"/1/2\",\"menus\":[{\"id\":\"2-1-0\",\"name\":\"三级菜单\",\"path\":\"/1/2/1\"},{\"id\":\"2-1-1\",\"name\":\"三级菜单\",\"path\":\"/1/2/2\"}]}]}]";
         return ApiResult.succeeded(
                 ConstantEnum.Status.SUCCEEDED.getCode(),
-                "登录成功"
+                "登录成功",
+                menus
         );
     }
 
