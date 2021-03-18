@@ -6,6 +6,24 @@
     "icon": "fa fa-fw fa-home"
   },
   {
+    "id": "2",
+    "name": "元数据管理",
+    "path": "/metadata/list.html",
+    "icon": "fa fa-fw fa-sitemap"
+  },
+  {
+    "id": "3",
+    "name": "流程设计器管理",
+    "path": "/flow_designer/list.html",
+    "icon": "fa fa-fw fa-long-arrow-right"
+  },
+  {
+    "id": "4",
+    "name": "表单设计器管理",
+    "path": "/form_designer/list.html",
+    "icon": "fa fa-fw fa-wpforms"
+  },
+  {
     "id": "1",
     "name": "系统配置",
     "path": "#",
